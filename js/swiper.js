@@ -7,6 +7,8 @@ var startEle = 0;
 var index = 0;
 var dis = 0;
 var imgArr;
+var w = document.documentElement.clientWidth;
+var h =  document.documentElement.clientHeight;
 
 $.ajax({
         method: 'GET',
@@ -20,11 +22,17 @@ $.ajax({
                 imgs += '<div class="banner"><a class="banner-link" href="' + imgArr[i].target_url + ' "alt="">'
                         + '<img  class="banner-img" src="'+ imgArr[i].pictures[0].photo_src + ' "alt="">'
                         + '<p class="img-des">' + imgArr[i].title + '</p>' + '</a>' + '</div>';
-                btn += '<span></span>'
+                btn += '<span></span>'            
             }
             swiper.innerHTML = imgs;
             indicator.innerHTML = btn;
             indicator.children[0].className = 'on';
+            swiper.style.width = w * 3 / 75 + 'rem';
+            console.log(w);
+            for (var i = 0; i < imgArr.length; i++) {
+                $$('.banner')[i].style.width = w /75 + 'rem';
+                $$('.banner-img')[i].style.width = w /75 + 'rem';   
+            }
         }    
 })
 
@@ -39,10 +47,10 @@ swiper.addEventListener('touchmove', function(e) {
 });
 swiper.addEventListener('touchend', function (e) {
     if (disX < 0 && dis > -10*(imgArr.length-1)) {
-        dis = dis - 10;
+        dis = dis - w / 75;
         index++;
     } else if (disX > 0 && dis < 0) {
-        dis = dis + 10;
+        dis = dis + w / 75;
         index--;
     } 
     buttonChange(indicator.children);
