@@ -10,7 +10,7 @@ var imgArr;
 
 $.ajax({
         method: 'GET',
-        url: 'http://www.pumbf.me/emergencytask/public/index.php/api/Article/hotArticle?page=1&size=3',
+        url: 'http://redrock.team/cqupt-wechatNews/public/index.php/api/Article/hotArticle?page=1&size=3',
         dataType: 'json',
         success: function(res) {
             var imgs = '';
