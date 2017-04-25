@@ -66,6 +66,7 @@ a {
 }
 .content {
   width: 100%;
+  min-height: 4rem;
 }
 .content .tab {
   width: 100%;
